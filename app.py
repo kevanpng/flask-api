@@ -1,7 +1,8 @@
 from flask import Flask
-from apis import api
+from apis import blueprint as api
 
 app = Flask(__name__)
-api.init_app(app)
+app.register_blueprint(api, url_prefix='/api/1')
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
